@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'save_action_save_and_new' => 'Lưu và tạo mới',
+    'products' => 'sản phẩm',
+    'product' => 'sản phẩm',
+    'save_action_save_and_edit' => 'Lưu và tiếp tục chỉnh sửa',
+    'save_action_save_and_back' => 'Lưu và quay lại',
+    'save_action_changed_notification' => 'Hành động mặc định sau khi lưu đã được thay đổi.',
+    'add' => 'Thêm',
+    'back_to_all' => 'Quay lại danh sách ',
+    'cancel' => 'Hủy',
+    'add_a_new' => 'Thêm mới ',
+    'edit' => 'Chỉnh sửa',
+    'save' => 'Lưu',
+    'revisions' => 'Phiên bản',
+    'no_revisions' => 'Không có phiên bản',
+    'history' => 'Lịch sử',
+    'delete' => 'Xóa',
+    'restore' => 'Phục hồi',
+    'details_row' => 'Đây là chi tiết của hàng. Thay đổi theo ý muốn.',
+    'delete_confirm' => 'Bạn có chắc chắn muốn xóa mục này?',
+    'delete_confirmation_title' => 'Mục đã xóa',
+    'delete_confirmation_message' => 'Mục đã bị xóa thành công.',
+    'delete_confirmation_not_title' => 'Không thể xóa',
+    'delete_confirmation_not_message' => 'Đã xảy ra lỗi. Mục của bạn có thể chưa được xóa.',
+    'delete_confirmation_not_deleted_title' => 'Không thể xóa',
+    'delete_confirmation_not_deleted_message' => 'Không có gì xảy ra. Mục của bạn an toàn.',
+    // Các chuỗi ngôn ngữ khác
+];
