@@ -1,12 +1,11 @@
-```markdown
-# Báo cáo Hướng dẫn Cài đặt và Quản lý Dự án Laravel với Docker
+
+# Báo cáo Hướng dẫn Cài đặt và Quản lý Dự án Laravel Hexa với Docker
 
 ## 1. Giới thiệu
-Dự án Laravel của bạn (`hexa-shop`) đã được thiết lập để chạy với Docker, bao gồm các dịch vụ: `app` (PHP-FPM), `mysql` (MySQL 8.0), `nginx` (web server), và `mailpit` (email testing). Báo cáo này tổng hợp các bước cài đặt, khắc phục lỗi, chạy ứng dụng trên trình duyệt, và thêm dữ liệu vào cơ sở dữ liệu. Báo cáo được cập nhật vào lúc 11:58 PM +07, Thứ Năm, 10/07/2025.
+Dự án Laravel của bạn (`hexa-shop`) đã được thiết lập để chạy với Docker, bao gồm các dịch vụ: `app` (PHP-FPM), `mysql` (MySQL 8.0), `nginx` (web server), và `mailpit` (email testing). Báo cáo này tổng hợp các bước cài đặt, khắc phục lỗi, chạy ứng dụng trên trình duyệt, và thêm dữ liệu vào cơ sở dữ liệu.
 
 ## 2. Yêu cầu hệ thống
 - Đã cài đặt **Docker** và **Docker Compose**.
-- Đã cài đặt **Node.js** và **npm** trên máy chủ để xử lý các dependencies frontend (nếu có).
 - Các cổng `80`, `3306`, `8025`, `1025`, và `9000` không bị chiếm dụng.
 
 ## 3. Các bước thực hiện
@@ -57,15 +56,6 @@ Dự án Laravel của bạn (`hexa-shop`) đã được thiết lập để ch�
     ```
   - **Giải thích**: File này cấu hình Nginx để phục vụ ứng dụng Laravel và chuyển tiếp request PHP sang PHP-FPM.
 
-#### Cài đặt dependencies frontend
-- **Câu lệnh**:
-  ```bash
-  cd /đường/dẫn/đến/thư/mục/dự/án
-  npm install
-  ```
-  - **Giải thích**: Cài đặt các gói Node.js được liệt kê trong `package.json` (nếu dự án sử dụng Laravel Mix hoặc Vite). Thực hiện lệnh này trên máy chủ, không trong container, vì `node` và `npm` không được cài trong container `app`.
-  - **Kết quả mong đợi**: Các thư viện frontend (CSS, JS) được cài vào thư mục `node_modules`.
-
 #### Khởi tạo và chạy container
 - **Câu lệnh**:
   ```bash
@@ -77,6 +67,11 @@ Dự án Laravel của bạn (`hexa-shop`) đã được thiết lập để ch�
 ### 3.2. Cấu hình ứng dụng Laravel
 #### Tạo khóa ứng dụng
 - **Câu lệnh**:
+  ```bash
+  docker-compose exec app composer install
+  ```
+  - **Giải thích**: Cài đặt các gói `Node.js` được liệt kê trong `package.json` (nếu dự án sử dụng `Laravel Mix` hoặc `Vite`). Thực hiện lệnh này trên máy chủ, không trong `container`, vì `node` và `npm` không được cài trong `container app`.
+  - **Kết quả mong đợi**:  Các thư viện `frontend (CSS, JS)` được cài vào thư mục `node_modules`.
   ```bash
   docker-compose exec app php artisan key:generate
   ```
@@ -319,5 +314,3 @@ Dự án Laravel của bạn (`hexa-shop`) đã được thiết lập để ch�
   ```
 - Đảm bảo `APP_URL` trong `.env` khớp với địa chỉ truy cập.
 - Cập nhật đường dẫn ảnh (`firstImage`, `secondImage`, `thirdImage`) trong seeder nếu cần.
-- Nếu sử dụng Vite hoặc Laravel Mix, sau `npm install`, chạy `npm run dev` hoặc `npm run build` trên máy chủ để biên dịch tài nguyên frontend.
-```
